@@ -27,3 +27,7 @@ def get_database_user():
 
 def get_database_pass():
     return os.environ['CARNET_DATABASE_PASS']
+
+
+def get_update_interval():
+    return os.environ['CARNET_UPDATE_INTERVAL']

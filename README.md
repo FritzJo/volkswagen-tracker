@@ -35,6 +35,7 @@ docker run -e CARNET_USERNAME=<Your Car-Net Email> \
            -e CARNET_DATABASE_PORT=<Your InfluxDB Port> \
            -e CARNET_DATABASE_USER=<Your InfluxDB User> \
            -e CARNET_DATABASE_PASS=<Your InfluxDB Password> \
+           -e CARNET_UPDATE_INTERVAL=<Wait time between updates (hours)> \
            volkswagen-tracker
 ```
 Alternatively use the docker-compose file that is provided with this repository.

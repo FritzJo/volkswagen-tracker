@@ -3,7 +3,7 @@ from time import sleep
 import requests
 
 from vw_carnet import CarNetLogin, getMileage, getRange
-from environment import get_username, get_password, get_database_host, get_database_port
+from environment import get_username, get_password, get_update_interval
 from database.influx import add_entry
 
 # Login information for the VW CarNet app
@@ -19,4 +19,4 @@ while True:
     distanceCovered = int(distanceCovered_str.replace(".", ""))
     current_range = int(getRange(s, url))
     add_entry(distanceCovered, current_range)  # Insert the value into the database
-    sleep(1 * 60 * 60 * 3)  # Wait for 3 h
+    sleep(1 * 60 * 60 * get_update_interval())  # Wait for 3 h

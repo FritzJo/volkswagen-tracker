@@ -9,6 +9,7 @@ services:
             - "CARNET_DATABASE_PORT=8086"
             - "CARNET_DATABASE_USER="
             - "CARNET_DATABASE_PASS="
+            - "CARNET_UPDATE_INTERVAL="
         depends_on: 
             - influxdb
         restart: unless-stopped
