@@ -1,0 +1,19 @@
+version: '2'
+services:
+    carnet:
+        build: .
+        environment:
+            - "CARNET_USERNAME="
+            - "CARNET_PASSWORD="
+            - "CARNET_DATABASE_HOST=influxdb"
+            - "CARNET_DATABASE_PORT=8086"
+            - "CARNET_DATABASE_USER="
+            - "CARNET_DATABASE_PASS="
+        depends_on: 
+            - influxdb
+        restart: unless-stopped
+
+    influxdb:
+        image: influxdb
+        ports:
+            - "8086:8086"
