@@ -9,7 +9,9 @@ All the data collected is stored in a database.
 The API interaction itself is mainly based on the work of [reneboer](https://github.com/reneboer/python-carnet-client).
 
 ## Features
-* Printing the current mileage
+* Collecting:
+    * Mileage
+    * Range
 * Writing the gathered data to a database
 * Supported database types
     * InfluxDB
@@ -19,7 +21,6 @@ The API interaction itself is mainly based on the work of [reneboer](https://git
 * Collect more information from Car-Net
 * Add more options for database backends
 * Predicting the mileage at the end of month or given period of time
-* Visualizing the data via a website
 
 
 # How-To
