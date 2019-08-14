@@ -16,7 +16,7 @@ url = CarNetLogin(s, CARNET_USERNAME, CARNET_PASSWORD)  # Login and receive the 
 """Request mileage data every 3 hours and write it to the database"""
 while True:
     distanceCovered_str = getMileage(s, url)  # Pull the information from Carnet
-    distanceCovered = int(distanceCovered_str.replace(".",""))
+    distanceCovered = int(distanceCovered_str.replace(".", ""))
     current_range = int(getRange(s, url))
     add_entry(distanceCovered, current_range)  # Insert the value into the database
     sleep(1 * 60 * 60 * 3)  # Wait for 3 h
