@@ -3,9 +3,7 @@
 
 
 import re
-import requests
 import json
-import sys
 
 request_headers = {
     'Accept': 'application/json, text/plain, */*',

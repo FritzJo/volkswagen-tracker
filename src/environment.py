@@ -1,5 +1,9 @@
 import os
 
+'''
+If you want to use any other way to handle credentials, just edit these functions 
+'''
+
 
 def get_username():
     return os.environ['CARNET_USERNAME']
