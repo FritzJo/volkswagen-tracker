@@ -1,6 +1,6 @@
 # Volkswagen-Tracker
 Volkswagen-Tracker is a Python script to gather information about your Volkswagen.
-I initially created this tool to measure the mileage of my car in a grafana dashboard, but decided
+I initially created this tool to measure the mileage of my car in a Grafana dashboard, but decided
 to expand the project to cover other data as well.
 
 It uses the unofficial API of the Volkswagen Car-Net Website, which means this application only works with CarNet-enabled vehicles.
@@ -20,8 +20,8 @@ The API interaction itself is mainly based on the work of [reneboer](https://git
 ## Roadmap
 * Collect more information from Car-Net
 * Add more options for database backends
-* Predicting the mileage at the end of month or given period of time
-
+* Guides for Grafana intergration
+* Add examples for Grafana dashboards
 
 # How-To
 ## Docker
