@@ -33,7 +33,7 @@ docker run -e VW_USERNAME=<Your We-Connect Email> \
            -e VW_PASSWORD=<Your We-Connect Password> \
            -e VW_DATABASE_HOST=<Your InfluxDB Hostaddress> \
            -e VW_DATABASE_PORT=<Your InfluxDB Port> \
-           -e VW__DATABASE_USER=<Your InfluxDB User> \
+           -e VW_DATABASE_USER=<Your InfluxDB User> \
            -e VW_DATABASE_PASS=<Your InfluxDB Password> \
            -e VW_UPDATE_INTERVAL=<Wait time between updates (hours)> \
            volkswagen-tracker
