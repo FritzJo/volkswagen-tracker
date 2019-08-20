@@ -3,7 +3,7 @@ Volkswagen-Tracker is a Python script to gather information about your Volkswage
 I initially created this tool to measure the mileage of my car in a Grafana dashboard, but decided
 to expand the project to cover other data as well.
 
-It uses the unofficial API of the Volkswagen We-Connect (new Car-Net) Website, which means this application only works with We-Connect-enabled vehicles.
+It uses the unofficial API of the [Volkswagen We-Connect](https://www.portal.volkswagen-we.com/portal/) (new Car-Net) Website, which means this application only works with We-Connect-enabled vehicles.
 All the data collected is stored in a database.
 
 The API interaction itself is mainly based on the work of [reneboer](https://github.com/reneboer/python-carnet-client).
