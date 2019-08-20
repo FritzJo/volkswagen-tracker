@@ -29,13 +29,13 @@ The API interaction itself is mainly based on the work of [reneboer](https://git
 git clone https://github.com/FritzJo/volkswagen-tracker.git
 cd volkswagen-tracker
 docker build -t volkswagen-tracker .
-docker run -e VW_USERNAME=<Your We-Connect Email> \
-           -e VW_PASSWORD=<Your We-Connect Password> \
-           -e VW_DATABASE_HOST=<Your InfluxDB Hostaddress> \
-           -e VW_DATABASE_PORT=<Your InfluxDB Port> \
-           -e VW_DATABASE_USER=<Your InfluxDB User> \
-           -e VW_DATABASE_PASS=<Your InfluxDB Password> \
-           -e VW_UPDATE_INTERVAL=<Wait time between updates (hours)> \
+docker run -e VW_USERNAME= \
+           -e VW_PASSWORD= \
+           -e VW_DATABASE_HOST= \
+           -e VW_DATABASE_PORT= \
+           -e VW_DATABASE_USER=\
+           -e VW_DATABASE_PASS= \
+           -e VW_UPDATE_INTERVAL= \
            volkswagen-tracker
 ```
 Alternatively use the docker-compose file that is provided with this repository.
@@ -45,3 +45,13 @@ by default.
 ```bash
 docker-compose up -d --build
 ```
+## Parameters
+|Parameter|Description|
+|---|---|
+|VW_USERNAME|Your We-Connect Email.|
+|VW_PASSWORD|Your We-Connect Password.|
+|VW_DATABASE_HOST|The InfluxDB Hostaddress. If you use docker, this is the name of the database container.|
+|VW_DATABASE_PORT|InfluxDB Port (default is 8086).|
+|VW_DATABASE_USER|InfluxDB user.|
+|VW_DATABASE_PASS|The password for the database user.|
+|VW_UPDATE_INTERVAL|Wait time between updates (hours).|
