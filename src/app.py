@@ -20,5 +20,5 @@ while True:
     distanceCovered = int(distanceCovered_str.replace(".", ""))  # Removes the . in the mileage value (6.400 -> 6400)
     current_range = int(getRange(s, url))
     add_entry(distanceCovered, current_range)  # Insert the value into the database
-    time_waited = time_waited + get_update_interval()  # Time since last login refresh
-    sleep(1 * 60 * 60 * get_update_interval())  # Wait for X h
+    time_waited = time_waited + int(get_update_interval())  # Time since last login refresh
+    sleep(1 * 60 * 60 * int(get_update_interval()))  # Wait for X h
