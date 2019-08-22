@@ -13,21 +13,21 @@ def add_entry(json_info, emanager_info_json):
             "measurement": "mileage",
             "time": time,
             "fields": {
-                "mileage_value": json_info['vehicleDetails']['distanceCovered']
+                "mileage_value": int(json_info['vehicleDetails']['distanceCovered'].replace(".", ""))
             }
         },
         {
             "measurement": "range",
             "time": time,
             "fields": {
-                "current_range": json_info['vehicleDetails']['range']
+                "current_range": int(json_info['vehicleDetails']['range'])
             }
         },
                 {
             "measurement": "charging",
             "time": time,
             "fields": {
-                "chargingState": '1' if emanager_info_json['EManager']['rbc']['status']['chargingState'] == 'ON' else '0',
+                "chargingState": 1 if emanager_info_json['EManager']['rbc']['status']['chargingState'] == 'ON' else 0,
                 "batteryPercentage": emanager_info_json['EManager']['rbc']['status']['batteryPercentage'],
             }
         }
