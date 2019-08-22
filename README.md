@@ -15,6 +15,8 @@ The API interaction itself is mainly based on the work of [reneboer](https://git
 * Collecting:
     * Mileage
     * Range
+    * Charging status
+    * Battery percentage
 * Writing the gathered data to a database
 * Supported database types
     * InfluxDB
@@ -24,7 +26,6 @@ The API interaction itself is mainly based on the work of [reneboer](https://git
 * Collect more information from We-Connect
 * Add more options for database backends
 * Guides for Grafana intergration
-* Add examples for Grafana dashboards
 
 # How-To
 ## Docker
