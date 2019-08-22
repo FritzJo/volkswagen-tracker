@@ -1,3 +1,6 @@
+![dashboard example](docs/grafana_sample.png "Grafana sample dashboard")
+
+
 # Volkswagen-Tracker
 Volkswagen-Tracker is a Python script to gather information about your Volkswagen.
 I initially created this tool to measure the mileage of my car in a Grafana dashboard, but decided
