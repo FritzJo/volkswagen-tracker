@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # Thanks to Rene Boer and Stefan Rehlegger for the inital code
 
-
 import re
 import json
 
@@ -171,17 +170,3 @@ def retrieveCarNetInfo(session, url_base):
     print(CarNetPost(session, url_base, '/-/vehicle-info/get-vehicle-details'))
     print(CarNetPost(session, url_base, '/-/emanager/get-emanager'))
     return 0
-
-
-def getMileage(s, url_base):
-    info = CarNetPost(s, url_base, '/-/vehicle-info/get-vehicle-details')
-    json_info = json.loads(info)
-    distance_covered = json_info['vehicleDetails']['distanceCovered']
-    return distance_covered
-
-
-def getRange(s, url_base):
-    info = CarNetPost(s, url_base, '/-/vehicle-info/get-vehicle-details')
-    json_info = json.loads(info)
-    current_range = json_info['vehicleDetails']['range']
-    return current_range

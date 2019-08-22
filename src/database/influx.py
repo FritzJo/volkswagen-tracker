@@ -4,7 +4,7 @@ from influxdb import InfluxDBClient
 from environment import get_database_host, get_database_port, get_database_user, get_database_pass
 
 
-def add_entry(data, current_range):
+def add_entry(json_info):
     time = datetime.datetime.now()
 
     # Connect to the database
@@ -22,14 +22,14 @@ def add_entry(data, current_range):
             "measurement": "mileage",
             "time": time,
             "fields": {
-                "mileage_value": data
+                "mileage_value": json_info['vehicleDetails']['distanceCovered']
             }
         },
         {
             "measurement": "range",
             "time": time,
             "fields": {
-                "current_range": current_range
+                "current_range": json_info['vehicleDetails']['range']
             }
         }
     ]
