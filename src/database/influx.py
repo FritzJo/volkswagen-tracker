@@ -27,7 +27,7 @@ def add_entry(json_info, emanager_info_json):
             "measurement": "charging",
             "time": time,
             "fields": {
-                "chargingState": 1 if emanager_info_json['EManager']['rbc']['status']['chargingState'] == 'ON' else 0,
+                "chargingState": 0 if emanager_info_json['EManager']['rbc']['status']['chargingState'] == 'OFF' else 1,
                 "batteryPercentage": emanager_info_json['EManager']['rbc']['status']['batteryPercentage'],
             }
         }
