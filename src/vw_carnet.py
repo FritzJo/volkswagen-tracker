@@ -155,18 +155,3 @@ def CarNetPost(session, url_base, command):
     r = session.post(url_base + command, headers=request_headers)
     return r.text
 
-
-def CarNetPostAction(session, url_base, command, data):
-    print(command)
-    r = session.post(url_base + command, json=data, headers=request_headers)
-    return r.text
-
-
-def retrieveCarNetInfo(session, url_base):
-    print(CarNetPost(session, url_base, '/-/msgc/get-new-messages'))
-    print(CarNetPost(session, url_base, '/-/vsr/request-vsr'))
-    print(CarNetPost(session, url_base, '/-/vsr/get-vsr'))
-    print(CarNetPost(session, url_base, '/-/cf/get-location'))
-    print(CarNetPost(session, url_base, '/-/vehicle-info/get-vehicle-details'))
-    print(CarNetPost(session, url_base, '/-/emanager/get-emanager'))
-    return 0
