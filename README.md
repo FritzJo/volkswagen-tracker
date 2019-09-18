@@ -45,7 +45,10 @@ docker run -e VW_USERNAME= \
 Alternatively use the docker-compose file that is provided with this repository.
 Simply edit the yml file, fill in your credentials and run the following command to
 start the application with a InfluxDB. The database will be exposed to port 8086
-by default.
+by default. 
+
+If you look for a complete solution (including Grafana), you can use
+the docker-compose.yml.grafana file to deploy everything at once.
 ```bash
 docker-compose up -d --build
 ```
