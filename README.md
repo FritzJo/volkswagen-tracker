@@ -15,13 +15,13 @@ The API interaction itself is mainly based on the work of [reneboer](https://git
 
 ## Features
 * Collecting:
-    * Mileage
-    * Range
-    * Charging status
-    * Battery percentage
+  * Mileage
+  * Range
+  * Charging status
+  * Battery percentage
 * Writing the gathered data to a database
 * Supported database types
-    * InfluxDB
+  * InfluxDB
 * Docker integration
 
 ## Roadmap
@@ -29,8 +29,8 @@ The API interaction itself is mainly based on the work of [reneboer](https://git
 * Add more options for database backends
 * Guides for Grafana intergration
 
-# How-To
-## Docker
+## How-To
+### Docker
 ```bash
 git clone https://github.com/FritzJo/volkswagen-tracker.git
 cd volkswagen-tracker
@@ -54,7 +54,7 @@ the docker-compose.yml.grafana file to deploy everything at once.
 ```bash
 docker-compose up -d --build
 ```
-## Parameters
+### Parameters
 |Parameter|Description|
 |---|---|
 |VW_USERNAME|Your We-Connect Email.|
