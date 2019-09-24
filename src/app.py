@@ -22,5 +22,5 @@ while True:
     emanager_info_json = json.loads(CarNetPost(s, url, '/-/emanager/get-emanager'))
     logging.info("Writing data to database")
     add_entry(car_info_json, emanager_info_json)  # Insert the value into the database
-    logging.info("Waiting for " + str(1 * 60 * 60 * int(get_update_interval())) + " hours")
+    logging.info("Waiting for " + get_update_interval() + " hours")
     sleep(1 * 60 * 60 * int(get_update_interval()))  # Wait for X h
