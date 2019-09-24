@@ -2,6 +2,8 @@
 
 
 # Volkswagen-Tracker
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e0af2167fa4646289d99caf47182ffe9)](https://www.codacy.com/manual/fritzjo-git/volkswagen-tracker?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=FritzJo/volkswagen-tracker&amp;utm_campaign=Badge_Grade)
+
 Volkswagen-Tracker is a Python script to gather information about your Volkswagen.
 I initially created this tool to measure the mileage of my car in a Grafana dashboard, but decided
 to expand the project to cover other data as well.
