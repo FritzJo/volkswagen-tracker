@@ -1,8 +1,6 @@
 import os
 
-'''
-If you want to use any other way to handle credentials, just edit these functions 
-'''
+#If you want to use any other way to handle credentials, just edit these functions 
 
 
 def get_username():
