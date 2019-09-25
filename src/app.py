@@ -10,12 +10,12 @@ from environment import get_username, get_password, get_update_interval
 
 logging.basicConfig(format='%(asctime)s %(message)s',level=logging.DEBUG)
 
-"""Request data every X hours and write it to the database"""
+#Request data every X hours and write it to the database
 time_waited = 0
 while True:
     logging.info("Refreshing session and credentials")
-    s = requests.Session()  
-    url = CarNetLogin(s, get_username(), get_password()) 
+    s = requests.Session()
+    url = CarNetLogin(s, get_username(), get_password())
     logging.info("Requesting vehicle details from we-connect")
     car_info_json = json.loads(CarNetPost(s, url, '/-/vehicle-info/get-vehicle-details'))
     logging.info("Requesting e-manager information from we-connect")
