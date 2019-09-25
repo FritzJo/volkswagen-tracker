@@ -32,7 +32,7 @@ def add_entry(json_info, emanager_info_json):
             }
         }
     ]
-    
+
     # Connect to the database
     client = InfluxDBClient(get_database_host(),
                             get_database_port(),
