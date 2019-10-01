@@ -47,8 +47,8 @@ def add_entry(json_info, emanager_info_json):
     charge_status = 0 if emanager_info_json['EManager']['rbc']['status']['chargingState'] == 'OFF' else 1
     battery_percentage = emanager_info_json['EManager']['rbc']['status']['batteryPercentage']
 
-    sql = ''' INSERT INTO volkswagen(date,mileage,current_range,chargeStatus,batteryPercentage)
+    sql = ''' INSERT INTO volkswagen(date,mileage,range,chargeStatus,batteryPercentage)
               VALUES(?,?,?,?,?) '''
     cur = conn.cursor()
-    cur.execute(sql, time, mileage, range, charge_status, battery_percentage)
+    cur.execute(sql, time, mileage, current_range, charge_status, battery_percentage)
     return cur.lastrowid
