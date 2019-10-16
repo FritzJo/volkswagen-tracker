@@ -2,6 +2,7 @@
 
 
 # Volkswagen-Tracker
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e0af2167fa4646289d99caf47182ffe9)](https://www.codacy.com/manual/fritzjo-git/volkswagen-tracker?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=FritzJo/volkswagen-tracker&amp;utm_campaign=Badge_Grade)
 
 Volkswagen-Tracker is a Python script to gather information about your Volkswagen.
