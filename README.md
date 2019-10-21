@@ -60,7 +60,7 @@ docker-compose up -d --build
 |---|---|
 |VW_USERNAME|Your We-Connect Email.|
 |VW_PASSWORD|Your We-Connect Password.|
-|VW_DATABASE_HOST|The InfluxDB Hostaddress. If you use docker, this is the name of the database container.|
+|VW_DATABASE_HOST|The InfluxDB host address. If you use Docker, this is the name of the database container.|
 |VW_DATABASE_PORT|InfluxDB Port (default is 8086).|
 |VW_DATABASE_USER|InfluxDB user.|
 |VW_DATABASE_PASS|The password for the database user.|
