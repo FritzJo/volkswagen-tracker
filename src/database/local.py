@@ -8,5 +8,5 @@ def add_entry(json_info, emanager_info_json):
     charge_status = 0 if emanager_info_json['EManager']['rbc']['status']['chargingState'] == 'OFF' else 1
     battery_percentage = emanager_info_json['EManager']['rbc']['status']['batteryPercentage']
 
-    with open("database.txt", "a") as f:
+    with open("database.csv", "a") as f:
         f.write(time + ";" + mileage + ";" + current_range + ";" + charge_status + ";" + battery_percentage)
