@@ -22,7 +22,7 @@
       "cacheTimeout": null,
       "datasource": "Volkswagen",
       "gridPos": {
-        "h": 7,
+        "h": 9,
         "w": 5,
         "x": 0,
         "y": 0
@@ -60,7 +60,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.3.3",
+      "pluginVersion": "6.4.2",
       "targets": [
         {
           "alias": "State of Charge",
@@ -114,7 +114,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
+        "h": 9,
         "w": 7,
         "x": 5,
         "y": 0
@@ -232,10 +232,128 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 16,
+        "h": 9,
         "w": 12,
         "x": 12,
         "y": 0
+      },
+      "id": 4,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "km",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "range",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "current_range"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Range",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": "300",
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Volkswagen",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 9
       },
       "id": 2,
       "legend": {
@@ -352,10 +470,10 @@
       "gridPos": {
         "h": 9,
         "w": 12,
-        "x": 0,
-        "y": 7
+        "x": 12,
+        "y": 9
       },
-      "id": 4,
+      "id": 10,
       "legend": {
         "avg": false,
         "current": false,
@@ -381,7 +499,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "km",
+          "alias": "SoC",
           "groupBy": [
             {
               "params": [
@@ -391,27 +509,27 @@
             },
             {
               "params": [
-                "none"
+                "previous"
               ],
               "type": "fill"
             }
           ],
-          "measurement": "range",
+          "measurement": "charging",
           "orderByTime": "ASC",
-          "policy": "autogen",
+          "policy": "default",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "current_range"
+                  "batteryPercentage"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "max"
+                "type": "last"
               }
             ]
           ],
@@ -422,7 +540,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Range",
+      "title": "Battery Percentage",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -441,13 +559,13 @@
           "format": "short",
           "label": null,
           "logBase": 1,
-          "max": "300",
-          "min": "0",
+          "max": null,
+          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": "",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
@@ -460,14 +578,14 @@
       }
     }
   ],
-  "schemaVersion": 19,
+  "schemaVersion": 20,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {
@@ -487,5 +605,5 @@
   "timezone": "",
   "title": "Car",
   "uid": "hB97qAOZz",
-  "version": 2
+  "version": 5
 }
