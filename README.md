@@ -23,6 +23,8 @@ The API interaction itself is mainly based on the work of [reneboer](https://git
 * Writing the gathered data to a database
 * Supported database types
   * InfluxDB
+  * SQLite
+  * Local / CSV
 * Docker integration
 
 ## Roadmap
@@ -60,8 +62,9 @@ docker-compose up -d --build
 |---|---|
 |VW_USERNAME|Your We-Connect Email.|
 |VW_PASSWORD|Your We-Connect Password.|
-|VW_DATABASE_HOST|The InfluxDB host address. If you use Docker, this is the name of the database container.|
-|VW_DATABASE_PORT|InfluxDB Port (default is 8086).|
-|VW_DATABASE_USER|InfluxDB user.|
+|VW_DATABASE_TYPE|Select the database backend (influx, sqlite or local)
+|VW_DATABASE_HOST|The database host address. If you use Docker, this is the name of the database container.|
+|VW_DATABASE_PORT|Database port (default is 8086 for InfluxDB).|
+|VW_DATABASE_USER|Database user.|
 |VW_DATABASE_PASS|The password for the database user.|
 |VW_UPDATE_INTERVAL|Wait time between updates (hours).|
