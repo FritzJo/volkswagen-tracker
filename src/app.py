@@ -3,14 +3,23 @@ import json
 import logging
 
 from time import sleep
-from database.influx import add_entry
+
+import database.local
+import database.influx
+import database.sqlite
 
 from vw_carnet import CarNetLogin, CarNetPost
-from environment import get_username, get_password, get_update_interval
+from environment import get_username, get_password, get_update_interval, get_database_type
 
-logging.basicConfig(format='%(asctime)s %(message)s',level=logging.DEBUG)
+logging.basicConfig(format='%(asctime)s %(message)s', level=logging.DEBUG)
 
-#Request data every X hours and write it to the database
+# Define database backends
+database_backends = {"influx": database.influx,
+                     "sqlite": database.sqlite,
+                     "local": database.local,
+                     }
+
+# Request data every X hours and write it to the database
 time_waited = 0
 while True:
     logging.info("Refreshing session and credentials")
@@ -21,6 +30,8 @@ while True:
     logging.info("Requesting e-manager information from we-connect")
     emanager_info_json = json.loads(CarNetPost(s, url, '/-/emanager/get-emanager'))
     logging.info("Writing data to database")
-    add_entry(car_info_json, emanager_info_json)  # Insert the value into the database
+
+    # Select database type and insert value into db
+    database_backends[get_database_type()].add_entry(car_info_json, emanager_info_json)
     logging.info("Waiting for " + get_update_interval() + " hours")
     sleep(1 * 60 * 60 * int(get_update_interval()))  # Wait for X h
