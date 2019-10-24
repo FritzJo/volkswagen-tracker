@@ -1,6 +1,7 @@
 import requests
 import json
 import logging
+import datetime
 
 from time import sleep
 
@@ -29,9 +30,19 @@ while True:
     car_info_json = json.loads(CarNetPost(s, url, '/-/vehicle-info/get-vehicle-details'))
     logging.info("Requesting e-manager information from we-connect")
     emanager_info_json = json.loads(CarNetPost(s, url, '/-/emanager/get-emanager'))
+
+    # Collect important data from json
+    time = datetime.datetime.now()
+    mileage = int(car_info_json['vehicleDetails']['distanceCovered'].replace(".", ""))
+    current_range = int(car_info_json['vehicleDetails']['range'])
+    charge_status = 0 if emanager_info_json['EManager']['rbc']['status']['chargingState'] == 'OFF' else 1
+    battery_percentage = emanager_info_json['EManager']['rbc']['status']['batteryPercentage']
+
+    data = [time, mileage, current_range, charge_status, battery_percentage]
+
     logging.info("Writing data to database")
 
     # Select database type and insert value into db
-    database_backends[get_database_type()].add_entry(car_info_json, emanager_info_json)
+    database_backends[get_database_type()].add_entry(data)
     logging.info("Waiting for " + get_update_interval() + " hours")
     sleep(1 * 60 * 60 * int(get_update_interval()))  # Wait for X h

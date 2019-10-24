@@ -22,7 +22,7 @@ def create_connection(db_file):
     return conn
 
 
-def add_entry(json_info, emanager_info_json):
+def add_entry(data):
     database = r"volkswagen.db"
     sql_create_projects_table = """ CREATE TABLE IF NOT EXISTS volkswagen (
                                     id integer PRIMARY KEY,
@@ -41,14 +41,8 @@ def add_entry(json_info, emanager_info_json):
     else:
         print("Error! cannot create the database connection.")
 
-    time = datetime.datetime.now()
-    mileage = int(json_info['vehicleDetails']['distanceCovered'].replace(".", ""))
-    current_range = int(json_info['vehicleDetails']['range'])
-    charge_status = 0 if emanager_info_json['EManager']['rbc']['status']['chargingState'] == 'OFF' else 1
-    battery_percentage = emanager_info_json['EManager']['rbc']['status']['batteryPercentage']
-
     sql = ''' INSERT INTO volkswagen(date,mileage,range,chargeStatus,batteryPercentage)
               VALUES(?,?,?,?,?) '''
     cur = conn.cursor()
-    cur.execute(sql, time, mileage, current_range, charge_status, battery_percentage)
+    cur.execute(sql, data[0], data[1], data[2], data[3], data[4])
     return cur.lastrowid
