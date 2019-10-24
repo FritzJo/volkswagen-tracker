@@ -1,12 +1,3 @@
-import datetime
-
-
-def add_entry(json_info, emanager_info_json):
-    time = datetime.datetime.now()
-    mileage = int(json_info['vehicleDetails']['distanceCovered'].replace(".", ""))
-    current_range = int(json_info['vehicleDetails']['range'])
-    charge_status = 0 if emanager_info_json['EManager']['rbc']['status']['chargingState'] == 'OFF' else 1
-    battery_percentage = emanager_info_json['EManager']['rbc']['status']['batteryPercentage']
-
+def add_entry(data):
     with open("database.csv", "a") as f:
-        f.write(time + ";" + mileage + ";" + current_range + ";" + charge_status + ";" + battery_percentage)
+        f.write(str(data[0]) + ";" + str(data[1]) + ";" + str(data[2]) + ";" + str(data[3]) + ";" + str(data[4]))

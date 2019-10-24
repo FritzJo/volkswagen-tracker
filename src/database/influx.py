@@ -1,34 +1,31 @@
-import datetime
-
 from influxdb import InfluxDBClient
 
 from environment import get_database_host, get_database_port, get_database_user, get_database_pass
 
 
-def add_entry(json_info, emanager_info_json):
-    time = datetime.datetime.now()
+def add_entry(data):
     # Create the json containing the relevant data
     json_body = [
         {
             "measurement": "mileage",
-            "time": time,
+            "time": data[0],
             "fields": {
-                "mileage_value": int(json_info['vehicleDetails']['distanceCovered'].replace(".", ""))
+                "mileage_value": data[1]
             }
         },
         {
             "measurement": "range",
-            "time": time,
+            "time": data[0],
             "fields": {
-                "current_range": int(json_info['vehicleDetails']['range'])
+                "current_range": data[2]
             }
         },
-                {
+        {
             "measurement": "charging",
-            "time": time,
+            "time": data[0],
             "fields": {
-                "chargingState": 0 if emanager_info_json['EManager']['rbc']['status']['chargingState'] == 'OFF' else 1,
-                "batteryPercentage": emanager_info_json['EManager']['rbc']['status']['batteryPercentage'],
+                "chargingState": data[3],
+                "batteryPercentage": data[4],
             }
         }
     ]
