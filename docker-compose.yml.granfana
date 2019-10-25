@@ -6,7 +6,8 @@ services:
 		environment:
 			- "VW_USERNAME="
 			- "VW_PASSWORD="
-			- "VW_DATABASE_HOST=influxdb"
+			- "VW_DATABASE_TYPE=influx"
+            - "VW_DATABASE_HOST=influxdb"
 			- "VW_DATABASE_PORT=8086"
 			- "VW_DATABASE_USER="
 			- "VW_DATABASE_PASS="
