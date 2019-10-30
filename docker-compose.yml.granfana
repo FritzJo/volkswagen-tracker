@@ -9,9 +9,9 @@ services:
 			- "VW_DATABASE_TYPE=influx"
             - "VW_DATABASE_HOST=influxdb"
 			- "VW_DATABASE_PORT=8086"
-			- "VW_DATABASE_USER="
-			- "VW_DATABASE_PASS="
-			- "VW_UPDATE_INTERVAL="
+			- "VW_DATABASE_USER=influxuser"
+			- "VW_DATABASE_PASS=supersecretpassword"
+			- "VW_UPDATE_INTERVAL=1"
 		depends_on: 
 			- influxdib
 		restart: always
@@ -21,8 +21,8 @@ services:
 	influxdb:
 		image: influxdb
         environment:
-            - INFLUXDB_USER=
-            - INFLUXDB_USER_PASSWORD=
+            - INFLUXDB_USER=influxuser
+            - INFLUXDB_USER_PASSWORD=supersecretpassword
         networks:
             - logging
 
