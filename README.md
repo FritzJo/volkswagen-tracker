@@ -52,7 +52,7 @@ start the application with a InfluxDB. The database will be exposed to port 8086
 by default. 
 
 If you look for a complete solution (including Grafana), you can use
-the [docker-compose.yml.grafana](https://github.com/FritzJo/volkswagen-tracker/blob/master/docker-compose.yml.granfana) file to deploy everything at once.
+the [docker-compose.yml.grafana](https://github.com/FritzJo/volkswagen-tracker/blob/master/examples/docker-compose.yml.granfana) file to deploy everything at once.
 ```bash
 docker-compose up -d --build
 ```
