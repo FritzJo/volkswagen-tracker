@@ -1,25 +1,25 @@
 version: '2'
 
 services:
-	volkswagen:
-		build: .
-		environment:
-			- "VW_USERNAME="
-			- "VW_PASSWORD="
-			- "VW_DATABASE_TYPE=influx"
+    volkswagen:
+        build: .
+        environment:
+            - "VW_USERNAME="
+            - "VW_PASSWORD="
+            - "VW_DATABASE_TYPE=influx"
             - "VW_DATABASE_HOST=influxdb"
-			- "VW_DATABASE_PORT=8086"
-			- "VW_DATABASE_USER=influxuser"
-			- "VW_DATABASE_PASS=supersecretpassword"
-			- "VW_UPDATE_INTERVAL=1"
-		depends_on: 
-			- influxdib
-		restart: always
+            - "VW_DATABASE_PORT=8086"
+            - "VW_DATABASE_USER=influxuser"
+            - "VW_DATABASE_PASS=supersecretpassword"
+            - "VW_UPDATE_INTERVAL=1"
+        depends_on:
+            - influxdb
+        restart: always
         networks:
             - logging
 
-	influxdb:
-		image: influxdb
+    influxdb:
+        image: influxdb
         environment:
             - INFLUXDB_USER=influxuser
             - INFLUXDB_USER_PASSWORD=supersecretpassword
@@ -32,3 +32,5 @@ services:
             - "3000:3000"
         networks:
             - logging
+networks:
+    logging:
