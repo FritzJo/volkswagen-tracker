@@ -10,6 +10,7 @@ request_headers = {
     'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0.1; D5803 Build/23.5.A.1.291; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/63.0.3239.111 Mobile Safari/537.36'
 }
 
+certverify = False
 
 def remove_newline_chars(string: str) -> str:
     return string.replace('\n', '').replace('\r', '')
@@ -41,7 +42,7 @@ def CarNetLogin(session, email, password):
 
     # Get initial CSRF
     landing_page_url = base_url + '/portal/en_GB/web/guest/home'
-    landing_page_response = session.get(landing_page_url)
+    landing_page_response = session.get(landing_page_url, verify=certverify)
     if landing_page_response.status_code != 200:
         return ''
     csrf = extract_csrf(landing_page_response.text)
@@ -56,7 +57,7 @@ def CarNetLogin(session, email, password):
     get_login_url = base_url + \
                     '/portal/en_GB/web/guest/home/-/csrftokenhandling/get-login-url'
     login_page_response = session.post(
-        get_login_url, headers=auth_request_headers)
+        get_login_url, headers=auth_request_headers, verify=certverify)
     if login_page_response.status_code != 200:
         return ''
     login_url = json.loads(login_page_response.content).get(
@@ -64,14 +65,14 @@ def CarNetLogin(session, email, password):
 
     # Get login form url
     login_url_response = session.get(
-        login_url, allow_redirects=False, headers=auth_request_headers)
+        login_url, allow_redirects=False, headers=auth_request_headers, verify=certverify)
     if login_url_response.status_code != 302:
         return ''
     login_form_url = login_url_response.headers.get('location')
 
     # Get login action url, relay state and hmac tokens, and login CSRF
     login_form_location_response = session.get(
-        login_form_url, headers=auth_request_headers)
+        login_form_url, headers=auth_request_headers, verify=certverify)
     if login_form_location_response.status_code != 200:
         return ''
     login_action_url_re = re.compile(
@@ -96,7 +97,7 @@ def CarNetLogin(session, email, password):
         '_csrf': login_csrf1,
     }
     login_action_url_response = session.post(login_action_url, data=post_data,
-                                             headers=auth_request_headers, allow_redirects=True)
+                                             headers=auth_request_headers, allow_redirects=True, verify=certverify)
     if login_action_url_response.status_code != 200:
         return ''
     auth_request_headers['Referer'] = login_action_url
@@ -122,7 +123,7 @@ def CarNetLogin(session, email, password):
         'login': 'true'
     }
     login_post_response = session.post(login_action2_url, data=login_data,
-                                       headers=auth_request_headers, allow_redirects=True)
+                                       headers=auth_request_headers, allow_redirects=True, verify=certverify)
     if login_post_response.status_code != 200:
         return ''
     ref2_url = login_post_response.headers.get('location')
@@ -136,14 +137,14 @@ def CarNetLogin(session, email, password):
     final_login_url = base_url + '/portal/web/guest/complete-login' + '?p_auth=' + state + \
                       '&p_p_id=33_WAR_cored5portlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_33_WAR_cored5portlet_javax.portlet.action=getLoginStatus'
     complete_login_response = session.post(final_login_url, data=portlet_data,
-                                           allow_redirects=False, headers=auth_request_headers)
+                                           allow_redirects=False, headers=auth_request_headers, verify=certverify)
     if complete_login_response.status_code != 302:
         return ''
 
     # Get base JSON url
     base_json_url = complete_login_response.headers.get('location')
     base_json_response = session.get(
-        base_json_url, headers=auth_request_headers)
+        base_json_url, headers=auth_request_headers, verify=certverify)
     csrf = extract_csrf(base_json_response.text)
     request_headers['Referer'] = base_json_url
     request_headers['X-CSRF-Token'] = csrf
@@ -152,6 +153,6 @@ def CarNetLogin(session, email, password):
 
 def CarNetPost(session, url_base, command):
     print(command)
-    r = session.post(url_base + command, headers=request_headers)
+    r = session.post(url_base + command, headers=request_headers, verify=certverify)
     return r.text
 
