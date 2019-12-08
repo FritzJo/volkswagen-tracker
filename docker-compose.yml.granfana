@@ -23,6 +23,8 @@ services:
         environment:
             - INFLUXDB_USER=influxuser
             - INFLUXDB_USER_PASSWORD=supersecretpassword
+        ports:
+            - "8086:8086"
         networks:
             - logging
 
