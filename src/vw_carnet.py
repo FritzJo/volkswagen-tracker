@@ -50,7 +50,8 @@ def CarNetLogin(session, email, password):
     # Get login page url
     auth_request_headers = {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0.1; D5803 Build/23.5.A.1.291; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/63.0.3239.111 Mobile Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0.1; D5803 Build/23.5.A.1.291; wv) AppleWebKit/537.36 (KHTML, '
+                      'like Gecko) Version/4.0 Chrome/63.0.3239.111 Mobile Safari/537.36 '
     }
     auth_request_headers['Referer'] = base_url + '/portal'
     auth_request_headers['X-CSRF-Token'] = csrf
@@ -135,7 +136,8 @@ def CarNetLogin(session, email, password):
     auth_request_headers['Referer'] = ref2_url
     portlet_data = {'_33_WAR_cored5portlet_code': portlet_code}
     final_login_url = base_url + '/portal/web/guest/complete-login' + '?p_auth=' + state + \
-                      '&p_p_id=33_WAR_cored5portlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_33_WAR_cored5portlet_javax.portlet.action=getLoginStatus'
+                      '&p_p_id=33_WAR_cored5portlet&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&p_p_col_id=column' \
+                      '-1&p_p_col_count=1&_33_WAR_cored5portlet_javax.portlet.action=getLoginStatus '
     complete_login_response = session.post(final_login_url, data=portlet_data,
                                            allow_redirects=False, headers=auth_request_headers)
     if complete_login_response.status_code != 302:
