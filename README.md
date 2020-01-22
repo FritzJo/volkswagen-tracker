@@ -39,6 +39,7 @@ cd volkswagen-tracker
 docker build -t volkswagen-tracker .
 docker run -e VW_USERNAME= \
            -e VW_PASSWORD= \
+           -e VW_DATABASE_TYPE= \
            -e VW_DATABASE_HOST= \
            -e VW_DATABASE_PORT= \
            -e VW_DATABASE_USER=\
